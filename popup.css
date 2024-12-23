@@ -1,5 +1,19 @@
 .container{
     width: 200px;
     text-align: center;
+    padding: 10px;
+}
+
+#heading{
+    font-size: 1.5em;
+}
+
+span{
+    font-size: 1em;
+}
+
+#typingSpeed
+{
+   font-size: 2em; 
 }
 

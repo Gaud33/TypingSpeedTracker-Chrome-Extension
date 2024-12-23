@@ -1,7 +1,19 @@
-// receive typingspeed sent from content.js
- chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.type === 'contentToPopup') {
-        // Forward the data to popup
-         chrome.runtime.sendMessage({ type: 'popupData', data: message.data });
-        }
-      });
+let currentData = "0";
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+   
+  // message from content
+  if (message.type === "contentToPopup") {
+    currentData = message.data;
+  }
+
+  // handle page reload (user presses Enter)
+  if(message.type === "openPopup"){
+    //logic
+  }
+  
+  // received request from popup
+  if (message.type === "requestData") {
+    sendResponse({ data: currentData });
+  }
+});
