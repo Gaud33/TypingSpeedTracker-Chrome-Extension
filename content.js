@@ -2,17 +2,19 @@ let lastTime = 0;
 let words = 0;
 
 let finalSpeed = 0;
+iterations = 0;
 
 console.log("Content script is running!");
 
 let calculatedTypingSpeed = ()=>{   
-        const speed = (words/0.03);
+        iterations++;
+        const speed = (words/0.01667);
 
         // Calculate average of current speed and new speed
-        finalSpeed = (finalSpeed + speed) /2; 
+        finalSpeed += speed; 
         
         // send the typing speed to be handled by background
-        chrome.runtime.sendMessage({type: 'contentToPopup', data: (finalSpeed).toFixed(0)});
+        chrome.runtime.sendMessage({type: 'contentToPopup', data: (finalSpeed/iterations).toFixed(0)});
 
     // reset for next calculations
     words = 0;
@@ -30,7 +32,7 @@ let calculatedTypingSpeed = ()=>{
         }
     };   
  }
- const throttleCalculate = throttle(calculatedTypingSpeed, 2000);
+ const throttleCalculate = throttle(calculatedTypingSpeed, 1000);
 
 
 
