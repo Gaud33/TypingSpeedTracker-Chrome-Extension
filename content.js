@@ -1,16 +1,51 @@
 let lastTime = 0;
-let typedChars = 0;
+let words = 0;
 
-let calculatedTypingSpeed = ()=>{
-    const currTime = Date.now();
-    const ellapsedTime = (currTime - lastTime)/1000;
+let finalSpeed = 0;
 
-    if(ellapsedTime >0){
-        const speed = (typedChars/ellapsedTime).toFixed(2);
-        console.log(`Typing speed: ${speed} char/sec`);
-    }
+console.log("Content script is running!");
+
+let calculatedTypingSpeed = ()=>{   
+        const speed = (words/0.03);
+
+        // Calculate average of current speed and new speed
+        finalSpeed = (finalSpeed + speed) /2; 
+        
+        // send the typing speed to be handled by background
+        chrome.runtime.sendMessage({type: 'contentToPopup', data: (finalSpeed).toFixed(0)});
 
     // reset for next calculations
-    lastTime = currTime;
-    typedChars - 0;
+    words = 0;
 }
+
+//throttle function to execute every 2 seconds
+ function throttle (func, delay){
+    let lastCall = 0;
+
+    return function(...args){
+        const now = Date.now();
+        if (now - lastCall >= delay){
+            lastCall = now;
+            func(...args);
+        }
+    };   
+ }
+ const throttleCalculate = throttle(calculatedTypingSpeed, 2000);
+
+
+
+// Detect input fields
+document.addEventListener("input", (event)=>{
+    
+    // run only on valid input fields
+    if(event.target.matches("input[type='text'], textarea")){
+        // logic to detect space pressed
+        if(event.data && event.data.length){
+            // increment words typed if space encountered
+            if(event.data === " "){
+                words++;
+            }
+        }
+        throttleCalculate();         
+    }
+});
