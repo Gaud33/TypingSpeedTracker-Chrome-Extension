@@ -1,6 +1,13 @@
 let currentData = "0";
 
+// badge to display the typing text
+function updateBadgeText(text) {
+  chrome.action.setBadgeText({ text: text  });
+  chrome.action.setBadgeBackgroundColor({ color: "#FFFFFF" });
+}
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  updateBadgeText(currentData);
    
   // message from content
   if (message.type === "contentToPopup") {
@@ -9,11 +16,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   // handle page reload (user presses Enter)
   if(message.type === "openPopup"){
-    //logic
   }
   
   // received request from popup
   if (message.type === "requestData") {
-    sendResponse({ data: currentData });
+    //update badge on each request from popup
+    updateBadgeText(currentData);
+    sendResponse({ data: currentData }); 
   }
 });
