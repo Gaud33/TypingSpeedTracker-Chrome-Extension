@@ -16,6 +16,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   // handle page reload (user presses Enter)
   if(message.type === "openPopup"){
+    chrome.action.setBadgeBackgroundColor({color:"#FFFF0F"});
   }
   
   // received request from popup

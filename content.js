@@ -8,7 +8,7 @@ console.log("Content script is running!");
 
 let calculatedTypingSpeed = () => {
   iterations++;
-  const speed = words / 0.01667;
+  const speed = words / 0.00833;
 
   // Calculate average of current speed and new speed
   finalSpeed += speed;
@@ -23,7 +23,7 @@ let calculatedTypingSpeed = () => {
   words = 0;
 };
 
-//throttle function to execute every 2 seconds
+//throttle function to execute every second
 function throttle(func, delay) {
   let lastCall = 0;
 
@@ -35,7 +35,7 @@ function throttle(func, delay) {
     }
   };
 }
-const throttleCalculate = throttle(calculatedTypingSpeed, 1000);
+const throttleCalculate = throttle(calculatedTypingSpeed, 500);
 
 
 // handle when user presses 'Enter' / page reloads
