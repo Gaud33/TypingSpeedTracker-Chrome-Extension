@@ -2,9 +2,20 @@ let lastTime = 0;
 let words = 0;
 
 let finalSpeed = 0;
-iterations = 0;
+let iterations = 0;
+
+let cleared = false;
 
 console.log("Content script is running!");
+
+// listen and handle clear message from bg
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if(message.type === "clear"){
+    cleared = true;
+    sendResponse({status:'success', message: 'response from content'});
+  }
+});
+
 
 let calculatedTypingSpeed = () => {
   iterations++;
@@ -13,11 +24,22 @@ let calculatedTypingSpeed = () => {
   // Calculate average of current speed and new speed
   finalSpeed += speed;
 
+  // reset if cleared
+  if(cleared){
+    iterations = 1;
+    finalSpeed = 0;
+    cleared = false;
+  }
+
   // send the typing speed to be handled by background
   chrome.runtime.sendMessage({
     type: "contentToPopup",
     data: (finalSpeed / iterations).toFixed(0),
   });
+
+  
+  
+  
 
   // reset for next calculations
   words = 0;
