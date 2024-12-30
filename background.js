@@ -6,7 +6,25 @@ function updateBadgeText(text) {
   chrome.action.setBadgeText({ text: text  });
   chrome.action.setBadgeBackgroundColor({ color: "#FFFFFF" });
 }
+// initial call
+updateBadgeText(currentData);
 
+// Inject content script into pre loaded tabs
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.tabs.query({}, (tabs) => {
+    tabs.forEach((tab) => {
+      if (tab.url && /^https?:\/\//.test(tab.url)) {
+        console.log("injecting content script");
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: ["content.js"],
+        });
+      }
+    });
+  });
+});
+
+// Listen for messages
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   updateBadgeText(currentData);
    

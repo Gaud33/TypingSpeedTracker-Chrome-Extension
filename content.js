@@ -8,6 +8,7 @@ let cleared = false;
 
 console.log("Content script is running!");
 
+
 // listen and handle clear message from bg
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if(message.type === "clear"){
@@ -15,7 +16,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse({status:'success', message: 'response from content'});
   }
 });
-
 
 let calculatedTypingSpeed = () => {
   iterations++;
@@ -36,14 +36,10 @@ let calculatedTypingSpeed = () => {
     type: "contentToPopup",
     data: (finalSpeed / iterations).toFixed(0),
   });
-
-  
-  
-  
-
   // reset for next calculations
   words = 0;
 };
+
 
 //throttle function to execute every second
 function throttle(func, delay) {

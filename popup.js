@@ -14,7 +14,7 @@ function requestData(){
 requestData();
 
 // handle clear button press
-document.getElementById("clear").addEventListener("click", ()=>{
+document.getElementById("clear-btn").addEventListener("click", ()=>{
     chrome.runtime.sendMessage({type:'clearData'}, (response)=>{
         
     });
