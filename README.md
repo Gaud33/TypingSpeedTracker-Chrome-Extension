@@ -7,7 +7,7 @@ This is a chrome extension that tracks your typing speed dynamically throughout 
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/Gaud33/TypingSpeedTracker-Chrome-Extension.git
+    git clone https://github.com/Gaud33/TypingSpeedTracker.git
     ```
     Or download it as zip.
 2. **Load the Extension**
