@@ -1,21 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=PT+Sans&display=swap" rel="stylesheet">
 
 </head>
-<body>
-    <div class = "container">
-        <h1 id = "heading">Typing Speed: </h1>
-        <h1 id = "typingSpeed">speed</h1> <span>wpm</span>
-        <button id = "clear-btn">Clear</button>
-    </div>
-    
-    <script src = "popup.js"></script>
 
-    
+<body class = "main">
+    <div class="container">
+
+        <div class ="header">
+            <div class = "header-text">
+                <h2 >TST</h2>
+            </div>
+            <div  class = "toggle-btn">
+                <span  class = "circle"></span>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1 id="heading">Typing Speed </h1>
+            <h1 id="typingSpeed">speed</h1> 
+            <div id = "wpm-text">wpm</div>
+            <!-- <button id = "clear-btn">Clear</button> -->
+
+            <div class="btn-outer">
+                <div class="button-wrapper">
+                    <button class="slide-button" id="clear-btn">
+                        <span class="slide-content">
+                            <span class="button-text">Clear</span>
+                            <span class="icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="popup.js"></script>
+
+
 </body>
+
 </html>

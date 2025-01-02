@@ -1,10 +1,55 @@
-.container{
-    width: 200px;
-    height: 150px;
-    text-align: center;
-    padding: 30px;   
-   
+:root{
+    --content-bg: white;
+    --primary-color: black;
+    --background-color: rgba(227, 225, 225, 0.927);
+    --btn-bg: rgba(135, 135, 135, 0.444);
+    --clear-bg: rgba(135, 135, 135, 0.444);
+    --btn-border: rgba(91, 91, 91, 0.444);
 }
+
+.darkmode{
+    --content-bg: rgb(41, 42, 45);
+    --primary-color: rgb(255, 255, 255);
+    --background-color: rgb(32, 33, 36);
+    --btn-bg: rgb(236, 236, 236);
+    --clear-bg: rgb(70, 70, 70);
+    --btn-border: rgba(78, 78, 78, 0.444);
+}
+
+body{
+    width: 200px;
+    height: 250px;
+    background-color:  var(--background-color);
+}
+.container{
+    height: 100%;
+    text-align: center;
+    top: 0;
+    padding-top: 0;
+    color: var(--primary-color);
+}
+
+.header{
+    
+    height: 10%;
+    /* text-align: left; */
+    padding: 0px 5px 10px 5px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+}
+.header-text{
+    font-size: 0.6em;
+
+}
+.content{
+    padding: 30px;
+    background-color: var(--content-bg);
+    /* border: 0.5px solid #60a5fa; */
+    border-radius: 3%;
+    font-family: 'PT Sans ', sans-serif;
+}
+
 
 #heading{
     font-size: 1.5em;
@@ -14,17 +59,115 @@ span{
     font-size: 1em;
 }
 
-typingSpeed
+#typingSpeed
 {
-   font-size: 2em; 
+   font-size: 2.5em; 
    margin-bottom: 0;
+   padding: 2px;
+}
+
+#wpm-text{
+    margin-top: 0;
+    padding: 0;
 }
 
 #clear-btn
 {
-    display:block;
     margin: auto;
     margin-top: 20px;
     
 }
 
+
+/* Clear Button Styling */
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 25px;
+}
+
+.slide-button {
+    position: relative;
+    padding: 0.2rem 0.7rem;
+    font-size: 1rem;
+    color: white;
+    background: none;
+    border: 2px solid var(--btn-border);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.button-text{
+    color: var(--primary-color);
+}
+
+.slide-content {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    gap: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.slide-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--clear-bg);
+    transition: transform 0.5s ease;
+    transform: skewX(-20deg);
+}
+
+.slide-button:hover::before {
+    transform: skewX(-20deg) translateX(100%);
+}
+
+
+.slide-button:hover .icon {
+    transform: translateX(5px);
+}
+
+
+.icon {
+    transition: transform 0.3s ease;
+}
+
+/* Toggle button Styling */
+.toggle-btn{
+    position:relative;
+    background-color:var(--btn-bg);
+    top: 11px;
+    height:15px;
+    width:30px;
+    border-radius: 9px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .circle{
+    position:absolute;
+    top:10%;
+    left:10%;
+    height:11px;
+    width:11px;
+    transition:.5s;
+    background:white;
+    border-radius:50%;
+  }
+  .dark-circle{
+   position:absolute;
+    top:12%;
+    left:52%;
+    height:11px;
+    width:11px;
+    transition:.5s;
+    background:var(--content-bg);
+    border-radius:50%;
+  }
