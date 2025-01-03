@@ -1,6 +1,6 @@
 # TypingSpeedTracker Extension
 
-This is a chrome extension that tracks your typing speed dynamically throughout the search bars.
+This is a chrome extension that tracks your typing speed dynamically throughout search bars.
 
 ## Installation
 
@@ -9,13 +9,13 @@ This is a chrome extension that tracks your typing speed dynamically throughout 
     ```bash
     git clone https://github.com/Gaud33/TypingSpeedTracker.git
     ```
-    Or download it as zip.
+    Or download it as a zip file.
 2. **Load the Extension**
-    - Open your browers and navigate to "chrome://extensions/"
-    - Enable "Developer Mode"
-    - Click on "Load Unpacked" and select the cloned extension
+    - Open your browser and navigate to "chrome://extensions/".
+    - Enable "Developer Mode".
+    - Click on "Load Unpacked" and select the cloned extension.
 
-**You are now able to use the extension as it tracks your speed through your search bar**
+**You are now able to use the extension as it tracks your speed through your search bar.**
 
 
 ## Contributing
